@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html template="./resources/defaultTemplate.xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Basic Tree</title>
+    </h:head>
+    <h:body>
+        <p:outputLabel value="#{basicView.hello}" />
+        <h:outputText value="Hello ?%½" />
+        <br/>
+
+        <p:tree value="#{basicView.root}" var="node" style="height: 30rem">
+            <p:treeNode>
+                <h:outputText value="#{node}" />
+            </p:treeNode>
+        </p:tree>        
+
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <br/>
+        <h:link outcome="Home" value="Home"/>
+    </h:body>
+</html>
+

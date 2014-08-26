@@ -1,0 +1,77 @@
+<ui:composition template="./resources/defaultTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="top">
+        <p:outputLabel value="Port CDM Visual Prototype Demo" />
+        <p:growl id="messages" showDetail="true" autoUpdate="true" />
+    </ui:define>
+
+
+    <ui:define name="left">
+
+
+        <h:form id="tree_form">
+            <p:panel id="tree_panel" header="Tree" >
+                <f:event listener="#{treeController.buildTreeNode()}" type="preRenderView" />
+
+                <p:tree value="#{treeController.currentTree}" var="node" selectionMode="single"
+                        selection="#{treeController.currentSelectedNode}" style="border: 0px; min-height: 20rem">
+                    <p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed"/>
+                    <p:ajax event="select" update=":detail_form :messages" listener="#{treeController.onNodeSelect}" />
+
+                    <p:treeNode type="Root" icon="ui-icon-home">
+                        <h:outputText value="#{node}" />
+                    </p:treeNode>
+                    <p:treeNode type="ETB" icon="ui-icon-document">
+                        <h:outputText value="#{node}" />
+                    </p:treeNode>
+                    <p:treeNode type="ETD" icon="ui-icon-document" >
+                        <h:outputText value="#{node}" />
+                    </p:treeNode>
+                    <p:treeNode type="ATB" icon="ui-icon-document">
+                        <h:outputText value="#{node}" />
+                    </p:treeNode>
+                    <p:treeNode type="ATD" icon="ui-icon-document">
+                        <h:outputText value="#{node}" />
+                    </p:treeNode>
+                    <p:treeNode type="Vessel" icon="ui-icon-flag">
+                        <h:outputText value="#{node}" />
+                    </p:treeNode>
+                    <p:treeNode type="State" icon="ui-icon-wrench" styleClass="treenode_color_green">
+                        <h:outputText value="#{node}" />
+                    </p:treeNode>
+                    <p:treeNode type="Action" icon="ui-icon-person">
+                        <h:outputText value="#{node}" />
+                    </p:treeNode>
+                </p:tree>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="right">
+        <h:form id="detail_form">
+            <p:panel id="detail_panel" header="Node Detail">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Node Name:" />
+                    <h:outputText value="#{treeController.currentNode.nodeName}"/>
+                    
+                    <h:outputLabel value="Node Type"/>
+                    <h:outputText value="#{treeController.currentNode.nodeType}" />
+                    
+                    <h:outputLabel value="Created:" />
+                    <h:outputText value="#{treeController.currentNode.created}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+                    </h:outputText>
+                    
+                    <h:outputLabel value="Node ID:" />
+                    <h:outputText value="#{treeController.currentNode.nodeId}" />
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,57 @@
+body, html {
+    height: 99%;
+    width: 99%;
+    overflow: hidden;
+}
+
+#top {
+    position: relative;
+    background-color: #036fab;
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+}
+
+#center_content {
+    position: relative;
+    background-color: white;
+    height: 100%;
+}
+
+#left {
+    float: left;   
+    width: 50%;
+    height: 100%;
+}
+
+#right {
+    float: left;  
+    width: 50%;
+    height: 100%;
+}
+
+#bottom {
+    position: relative;
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}
+#top a:link, #top a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+.treenode_color_red {
+    color: red;
+}
+
+.treenode_color_green {
+    color: green;
+}
